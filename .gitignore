@@ -1,0 +1,11 @@
+.gradle
+build/
+yarn.lock
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+
+### Kobweb ###
+.kobweb/*
+!.kobweb/conf.yaml
