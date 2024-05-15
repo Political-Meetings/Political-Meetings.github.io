@@ -1,4 +1,4 @@
-package fr.xibalba.portfolio
+package fr.xibalba.politicalMeetings
 
 import com.varabyte.kobweb.silk.components.style.breakpoint.BreakpointSizes
 import com.varabyte.kobweb.silk.init.InitSilk

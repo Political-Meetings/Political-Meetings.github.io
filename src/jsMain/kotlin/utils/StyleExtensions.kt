@@ -1,4 +1,4 @@
-package fr.xibalba.portfolio.utils
+package fr.xibalba.politicalMeetings.utils
 
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.DEFAULT_SHIFTING_PERCENT

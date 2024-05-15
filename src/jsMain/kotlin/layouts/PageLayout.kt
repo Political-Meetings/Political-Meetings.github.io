@@ -1,4 +1,4 @@
-package fr.xibalba.portfolio.layouts
+package fr.xibalba.politicalMeetings.layouts
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -8,10 +8,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.base
 import com.varabyte.kobweb.silk.components.style.toAttrs
-import fr.xibalba.portfolio.components.Footer
-import fr.xibalba.portfolio.components.HEADER_HEIGHT
-import fr.xibalba.portfolio.components.Header
-import fr.xibalba.portfolio.components.setTitle
+import fr.xibalba.politicalMeetings.components.Footer
+import fr.xibalba.politicalMeetings.components.HEADER_HEIGHT
+import fr.xibalba.politicalMeetings.components.Header
+import fr.xibalba.politicalMeetings.components.setTitle
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Main

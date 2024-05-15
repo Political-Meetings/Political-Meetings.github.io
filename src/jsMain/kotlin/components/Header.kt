@@ -1,4 +1,4 @@
-package fr.xibalba.portfolio.components
+package fr.xibalba.politicalMeetings.components
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.Width
@@ -16,7 +16,7 @@ import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
-import fr.xibalba.portfolio.utils.centered
+import fr.xibalba.politicalMeetings.utils.centered
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Text
 

@@ -1,4 +1,4 @@
-package fr.xibalba.portfolio
+package fr.xibalba.politicalMeetings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

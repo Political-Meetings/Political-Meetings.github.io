@@ -1,4 +1,4 @@
-package fr.xibalba.portfolio.components
+package fr.xibalba.politicalMeetings.components
 
 import androidx.compose.runtime.Composable
 
