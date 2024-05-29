@@ -7,8 +7,10 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
 
     alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
+    alias(libs.plugins.ksp)
 }
 
 group = "fr.xibalba"
@@ -63,7 +65,7 @@ kotlin {
 }
 
 tasks.withType<KotlinJsCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += listOf(
-        "-Xklib-enable-signature-clash-checks=false",
-    )
+    compilerOptions {
+        freeCompilerArgs.add("-Xklib-enable-signature-clash-checks=false")
+    }
 }

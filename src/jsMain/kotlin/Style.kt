@@ -1,11 +1,11 @@
 package fr.xibalba.politicalMeetings
 
-import com.varabyte.kobweb.silk.components.style.breakpoint.BreakpointSizes
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import org.jetbrains.compose.web.css.px
 import com.varabyte.kobweb.compose.ui.graphics.Color
+import com.varabyte.kobweb.silk.style.breakpoint.BreakpointSizes
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 
 @InitSilk

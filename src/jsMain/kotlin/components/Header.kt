@@ -12,7 +12,8 @@ import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiDarkMode
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLightMode
-import com.varabyte.kobweb.silk.components.style.*
+import com.varabyte.kobweb.silk.style.addVariant
+import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
@@ -22,7 +23,7 @@ import org.jetbrains.compose.web.dom.Text
 
 val HEADER_HEIGHT = 75.px
 
-val HeaderButtonStyle by ButtonStyle.addVariant {
+val HeaderButtonStyle = ButtonStyle.addVariant {
     base {
         Modifier.size(HEADER_HEIGHT).background(Color.transparent).borderRadius(0.px)
     }

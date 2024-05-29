@@ -5,9 +5,9 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.width
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.toAttrs
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toAttrs
 import fr.xibalba.politicalMeetings.components.Footer
 import fr.xibalba.politicalMeetings.components.HEADER_HEIGHT
 import fr.xibalba.politicalMeetings.components.Header
@@ -17,7 +17,7 @@ import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Main
 import web.window.window
 
-val MainTheme by ComponentStyle.base {
+val MainTheme = CssStyle.base {
     Modifier
         .margin {
             top(HEADER_HEIGHT)
