@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.ksp)
 }
 
@@ -57,6 +58,7 @@ kotlin {
                 implementation(libs.silk.icons.mdi)
                 implementation(libs.silk.icons.fa)
                 implementation(libs.kotlinx.wrappers.browser)
+                implementation(libs.kotlinx.serialization.json)
 
                 implementation(npm("marked", project.extra["npm.marked.version"].toString()))
             }
