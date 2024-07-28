@@ -1,68 +1,41 @@
 package fr.xibalba.politicalMeetings.components
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.Width
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.forms.ButtonStyle
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiDarkMode
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiLightMode
-import com.varabyte.kobweb.silk.style.addVariant
-import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.palette.background
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
-import fr.xibalba.politicalMeetings.utils.centered
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Text
-
-val HEADER_HEIGHT = 75.px
-
-val HeaderButtonStyle = ButtonStyle.addVariant {
-    base {
-        Modifier.size(HEADER_HEIGHT).background(Color.transparent).borderRadius(0.px)
-    }
-    val focusedModifier = Modifier.background(colorMode.toPalette().background.centered(0.15f))
-    hover {
-        focusedModifier
-    }
-    cssRule(".active") {
-        focusedModifier
-    }
-}
+import fr.xibalba.politicalMeetings.SecondaryButton
+import fr.xibalba.politicalMeetings.utils.unaryPlus
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.H1
 
 @Composable
 fun Header(routes: Set<Pair<String, String>>) {
     var theme by ColorMode.currentState
     val ctx = rememberPageContext()
-    Row(Modifier
-        .background(theme.toPalette().background.centered(0.05f))
-        .position(Position.Sticky)
-        .top(0.px).right(0.px).left(0.px)
-        .width(100.percent).height(HEADER_HEIGHT),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            routes.forEach { (path, title) ->
-                Button(onClick = { ctx.router.navigateTo(path) }, if (ctx.route.path == path) Modifier.classNames("active") else Modifier, HeaderButtonStyle) {
-                    Text(title)
+    Row(Modifier.position(Position.Sticky).width(100.percent), verticalAlignment = Alignment.CenterVertically) {
+        Logo(244 to 227)
+        Column(Modifier.width(100.percent)) {
+            H1(Modifier.fontSize(80.px).margin(topBottom = 10.px).toAttrs()) {
+                +"Political Meetings"
+            }
+            Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.width(100.percent)) {
+                for ((route, name) in routes) {
+                    Button(onClick = { ctx.router.navigateTo(route) }, variant = SecondaryButton, modifier = Modifier.width((100 / routes.size).percent)) {
+                        +name
+                    }
                 }
             }
         }
-        Row(Modifier.width(Width.FitContent).gap(10.px).margin(10.px),
-            verticalAlignment = Alignment.CenterVertically) {
-            Button(onClick = { theme = theme.opposite }, Modifier.width(30.px)) {
-                if (theme.isLight) {
-                    MdiDarkMode()
-                } else {
-                    MdiLightMode()
-                }
-            }
-        }
+        AccountBox()
     }
 }

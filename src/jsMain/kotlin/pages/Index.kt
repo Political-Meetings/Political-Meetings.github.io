@@ -9,9 +9,10 @@ import com.varabyte.kobweb.core.Page
 import fr.xibalba.politicalMeetings.data.Party
 import fr.xibalba.politicalMeetings.data.getParties
 import fr.xibalba.politicalMeetings.layouts.PageLayout
-import fr.xibalba.politicalMeetings.utils.H2
+import fr.xibalba.politicalMeetings.utils.unaryPlus
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.dom.H1
+import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.Text
 
 @Page("/index")
@@ -24,7 +25,7 @@ fun Index() {
                 Text("Home")
             }
             for (party in parties) {
-                H2(party.name)
+                H2{ +party.name }
                 for (meeting in party.meetings) {
                     Text("${meeting.date} - ${meeting.location}")
                 }
