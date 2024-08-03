@@ -32,6 +32,10 @@ suspend fun getParties(): Parties {
     return parties
 }
 
+fun setParties(newParties: Parties) {
+    parties = newParties
+}
+
 suspend fun reloadParties() {
     val list = window.fetch("https://raw.githubusercontent.com/Political-Meetings/Political-Meetings.github.io/master/Api/parties.json").await()
     val partyNames: List<String> = Json.decodeFromString(list.text().await())

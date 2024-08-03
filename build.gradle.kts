@@ -1,5 +1,4 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
-import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 
 val languages = listOf("en", "fr")
 
@@ -12,7 +11,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
 }
 
-group = "fr.xibalba"
+group = "fr.xibalba.politicalMeetings"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -57,6 +56,11 @@ kotlin {
                 implementation(libs.silk.icons.fa)
                 implementation(libs.kotlinx.wrappers.browser)
                 implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.coroutines)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.engine)
+                implementation(libs.ktor.client.serialization)
+                implementation(libs.ktor.client.serialization.json)
 
                 implementation(npm("marked", project.extra["npm.marked.version"].toString()))
             }
