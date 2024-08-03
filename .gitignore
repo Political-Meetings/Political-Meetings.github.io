@@ -9,3 +9,5 @@ yarn.lock
 ### Kobweb ###
 .kobweb/*
 !.kobweb/conf.yaml
+
+.private
