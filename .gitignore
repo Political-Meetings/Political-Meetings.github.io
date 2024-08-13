@@ -11,3 +11,4 @@ yarn.lock
 !.kobweb/conf.yaml
 
 .private
+.kotlin

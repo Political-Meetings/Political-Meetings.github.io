@@ -1,14 +1,15 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 val languages = listOf("en", "fr")
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
 
-    alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.compose.compiler)
 }
 
 group = "fr.xibalba.politicalMeetings"
@@ -33,22 +34,15 @@ kotlin {
     configAsKobwebApplication("app")
 
     js(IR) {
-        browser {
-            commonWebpackConfig {
-                val isDev = project.findProperty("kobwebEnv") == "DEV"
-                sourceMaps = isDev
-                devServer?.open = false
-            }
-        }
-
-        binaries.executable()
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions.target = "es2015"
     }
 
     sourceSets {
         jsMain {
             dependencies {
-                implementation(compose.html.core)
-                implementation(compose.runtime)
+                implementation(libs.compose.html.core)
+                implementation(libs.compose.runtime)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk)
                 implementation(libs.kobwebx.markdown)
