@@ -21,12 +21,13 @@ import kotlinx.serialization.json.Json
 import org.jetbrains.compose.web.css.vh
 import web.storage.localStorage
 
+val AppJson = Json {
+    ignoreUnknownKeys = true
+}
 val AppCoroutineScope = MainScope()
 val AppHttpClient = HttpClient {
     install(ContentNegotiation) {
-        json(Json {
-            ignoreUnknownKeys = true
-        })
+        json(AppJson)
     }
 }
 

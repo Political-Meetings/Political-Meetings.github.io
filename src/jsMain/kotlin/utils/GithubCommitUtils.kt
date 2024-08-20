@@ -1,12 +1,12 @@
 package fr.xibalba.politicalMeetings.utils
 
 import fr.xibalba.politicalMeetings.AppHttpClient
+import fr.xibalba.politicalMeetings.AppJson
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
@@ -44,6 +44,6 @@ suspend inline fun <reified T> editFile(token: String, path: String, content: T)
             append("X-GitHub-Api-Version", "2022-11-28")
         }
         val sha = getSha(token, path)
-        setBody(GithubCommit("Update parties.json", sha, Base64.encode(Json.encodeToString(content).encodeToByteArray())))
+        setBody(GithubCommit("Update parties.json", sha, Base64.encode(AppJson.encodeToString(content).encodeToByteArray())))
         contentType(ContentType.Application.Json)
     }
