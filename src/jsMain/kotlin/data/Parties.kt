@@ -3,11 +3,13 @@ package fr.xibalba.politicalMeetings.data
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import fr.xibalba.politicalMeetings.utils.flatten
-import kotlinx.browser.window
-import kotlinx.coroutines.await
+import fr.xibalba.politicalMeetings.AppCoroutineScope
+import fr.xibalba.politicalMeetings.AppHttpClient
+import fr.xibalba.politicalMeetings.utils.bodyTextAsJson
+import io.ktor.client.request.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 
 typealias Parties = List<Party>
 
@@ -27,25 +29,23 @@ private var parties by mutableStateOf<Parties>(emptyList())
 
 suspend fun getParties(): Parties {
     if (parties.isEmpty()) {
-        reloadParties()
+        val list = AppHttpClient.get {
+            url("https://raw.githubusercontent.com/Political-Meetings/Political-Meetings.github.io/master/Api/parties.json")
+            headers {
+                append("Accept", "application/json")
+            }
+        }.bodyTextAsJson<List<String>>()
+        parties = list.map { partyName ->
+            AppCoroutineScope.async {
+                AppHttpClient.get {
+                    url("https://raw.githubusercontent.com/Political-Meetings/Political-Meetings.github.io/master/Api/$partyName.party.json")
+                }.bodyTextAsJson<Party>()
+            }
+        }.awaitAll()
     }
     return parties
 }
 
 fun setParties(newParties: Parties) {
     parties = newParties
-}
-
-suspend fun reloadParties() {
-    val list = window.fetch("https://raw.githubusercontent.com/Political-Meetings/Political-Meetings.github.io/master/Api/parties.json").await()
-    val partyNames: List<String> = Json.decodeFromString(list.text().await())
-    val partiesPromises = partyNames.map { partyName ->
-        window.fetch("https://raw.githubusercontent.com/Political-Meetings/Political-Meetings.github.io/master/Api/$partyName.party.json").then {
-            it.text()
-        }.flatten()
-    }.toTypedArray()
-    val partyJsons: List<String> = partiesPromises.map { it.await() }
-    parties = partyJsons.map { partyJson ->
-        Json.decodeFromString<Party>(partyJson)
-    }
 }
