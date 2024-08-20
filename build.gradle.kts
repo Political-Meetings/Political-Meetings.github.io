@@ -1,5 +1,4 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 val languages = listOf("en", "fr")
 
@@ -8,7 +7,7 @@ plugins {
 
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
-    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
 }
 
