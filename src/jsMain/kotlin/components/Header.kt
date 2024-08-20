@@ -11,7 +11,6 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import fr.xibalba.politicalMeetings.SecondaryButton
 import fr.xibalba.politicalMeetings.utils.unaryPlus
 import org.jetbrains.compose.web.css.Position
@@ -21,7 +20,6 @@ import org.jetbrains.compose.web.dom.H1
 
 @Composable
 fun Header(routes: Set<Pair<String, String>>) {
-    var theme by ColorMode.currentState
     val ctx = rememberPageContext()
     Row(Modifier.position(Position.Sticky).width(100.percent), verticalAlignment = Alignment.CenterVertically) {
         Link("/") {

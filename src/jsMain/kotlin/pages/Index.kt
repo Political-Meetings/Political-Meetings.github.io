@@ -6,13 +6,12 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.core.Page
+import fr.xibalba.politicalMeetings.components.MeetingCard
 import fr.xibalba.politicalMeetings.data.Party
 import fr.xibalba.politicalMeetings.data.getParties
 import fr.xibalba.politicalMeetings.layouts.PageLayout
-import fr.xibalba.politicalMeetings.utils.unaryPlus
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.dom.H1
-import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.Text
 
 @Page("/index")
@@ -24,11 +23,8 @@ fun Index() {
             H1 {
                 Text("Home")
             }
-            for (party in parties) {
-                H2{ +party.name }
-                for (meeting in party.meetings) {
-                    Text("${meeting.date} - ${meeting.location}")
-                }
+            for ((party, meeting) in parties.flatMap { it.meetings.map { meeting -> it to meeting } }) {
+                MeetingCard(party, meeting)
             }
         }
     }
