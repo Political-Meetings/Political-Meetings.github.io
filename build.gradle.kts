@@ -32,10 +32,7 @@ kobweb {
 kotlin {
     configAsKobwebApplication("app")
 
-    js(IR) {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions.target = "es2015"
-    }
+    js(IR)
 
     sourceSets {
         jsMain {
