@@ -42,6 +42,7 @@ jobs:
         run: mv ./output/* ../Api
 
       - name: Commit and push changes
+        continue-on-error: true
         run: |
           git config --global user.name "XibalbaM"
           git config --global user.email "xibalbam@users.noreply.github.com"
